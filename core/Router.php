@@ -1,4 +1,5 @@
 <?php 
+namespace App\Core;
 
 class Router{
 	public $routes = [
@@ -32,6 +33,7 @@ class Router{
 		throw new Exception('NO routes definded for this URI.');
 		}
 	public function callAction($controller,$action){
+		$controller= "App\\Controllers\\{$controller}";
 		$controller=new $controller;
 		// die(var_dump($controller,$action));
 		if(! method_exists($controller, $action)){
